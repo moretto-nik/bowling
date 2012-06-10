@@ -32,4 +32,9 @@ describe Frame do
 	it 'get total point' do
 		@frame.getPoint().should == 7
 	end
+
+	it 'get total point with Strike and Spare' do
+		@frameSpare.getPoint().should == 10
+		@frameStrike.getPoint().should == 10
+	end
 end

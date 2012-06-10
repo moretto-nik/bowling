@@ -1,11 +1,17 @@
 class Frame
-	attr_reader :first_roll, :second_roll, :is_spare, :is_strike
+
+	attr_reader :first_roll, :second_roll, :is_spare, :is_strike, :total_point
 
 	def initialize(first_roll, second_roll)
 		@first_roll = first_roll
 		@second_roll = second_roll
+		@total_point = first_roll + second_roll
 
 		checkPoint()
+	end
+
+	def sumSpareStrike(value)
+		@total_point += value
 	end
 
 	def checkPoint()
@@ -19,7 +25,7 @@ class Frame
 	end
 
 	def getPoint()
-		@first_roll + @second_roll
+		@total_point
 	end
 
 	def is_spare?

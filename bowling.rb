@@ -11,34 +11,28 @@ class Bowling
 		@game
 	end
 
-	def getTotalPoint()
-		total_point = 0
-		before_is_spare = 0
-		before_is_strike = 0
+	def setTotalPoint()
+		tmpFrame = nil
 
 		@game.each do |frame|
-			total_point += frame.getPoint()
-			
-			if before_is_spare == 1
-				total_point += frame.first_roll
-				before_is_spare = 0
-			elsif before_is_strike == 1
-				total_point +=frame.getPoint()
-				before_is_strike = 0
+			if tmpFrame != nil && tmpFrame.is_strike?
+				tmpFrame.sumSpareStrike(frame.getPoint())
+			elsif tmpFrame != nil && tmpFrame.is_spare? 
+				tmpFrame.sumSpareStrike(frame.first_roll)
+			end 
+
+			if tmpFrame != nil
+				frame.sumSpareStrike(tmpFrame.total_point)
 			end
 
-			if frame.is_spare?
-				before_is_spare = 1
-			elsif frame.is_strike?
-				before_is_strike = 1
-			end
+			tmpFrame = frame
 		end
+	end
 
-		if @game.length == 11
-			total_point -= @game[@game.length-1].first_roll + @game[@game.length-1].second_roll
-		end
+	def getTotalPoint()
+		setTotalPoint()
 		
-		return total_point
+		return @game[-1].total_point
 	end
 
 end
