@@ -41,6 +41,6 @@ describe Bowling do
 
 	it 'test setTotalPoint' do
 		@bowlingSpare.setTotalPoint()[0].total_point.should == 16
-		@bowlingGame.setTotalPoint()[10].total_point.should == 133
+		@bowlingGame.setTotalPoint()[10].total_point.should == 139
 	end
 end

@@ -32,7 +32,11 @@ class Bowling
 	def getTotalPoint()
 		setTotalPoint()
 		
-		return @game[-1].total_point
+		if @game.length == 11
+			return @game[-1].total_point - (@game[-1].first_roll + @game[-1].second_roll)
+		else
+			return @game[-1].total_point
+		end
 	end
 
 end
