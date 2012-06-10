@@ -34,6 +34,10 @@ class Bowling
 			end
 		end
 
+		if @game.length == 11
+			total_point -= @game[@game.length-1].first_roll + @game[@game.length-1].second_roll
+		end
+		
 		return total_point
 	end
 

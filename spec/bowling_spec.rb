@@ -7,7 +7,7 @@ describe Bowling do
 		@bowlingSpare = Bowling.new([Frame.new(5,5),Frame.new(6,2),Frame.new(1,2)])
 		@bowlingStrike = Bowling.new([Frame.new(10,0),Frame.new(6,2),Frame.new(1,2)])
 		@bowlingGame = Bowling.new([Frame.new(1,4),Frame.new(4,5),Frame.new(6,4),Frame.new(5,5),
-																Frame.new(10,0),Frame.new(0,1),Frame.new(7,3),Frame.new(6,4),Frame.new(10,0),Frame.new(2,8)])
+									Frame.new(10,0),Frame.new(0,1),Frame.new(7,3),Frame.new(6,4),Frame.new(10,0),Frame.new(2,8),Frame.new(6,0)])
 	end
 
 	it 'constructor' do
