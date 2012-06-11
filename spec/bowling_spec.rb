@@ -20,23 +20,23 @@ describe Bowling do
 	end
 
 	it 'point' do
-		@bowling.getTotalPoint().should == 14
+		@bowling.totalPoint().should == 14
 	end
 
 	it 'total point with spare' do
-		@bowlingSpare.getTotalPoint().should == 27
+		@bowlingSpare.totalPoint().should == 27
 	end
 
 	it 'total point with strike' do
-		@bowlingStrike.getTotalPoint().should == 29
+		@bowlingStrike.totalPoint().should == 29
 	end
 
 	it 'complex game with spare and strike' do
-		@bowlingGame.getTotalPoint().should == 133
+		@bowlingGame.totalPoint().should == 133
 	end
 
 	it 'Turkey' do
-		@bowlingTurkey.getTotalPoint().should == 30
+		@bowlingTurkey.totalPoint().should == 60
 	end
 
 	it 'test setTotalPoint' do

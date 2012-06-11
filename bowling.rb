@@ -1,7 +1,7 @@
 require_relative 'frame'
 
 class Bowling
-	@game = []
+	attr_reader :game
 
 	def initialize(game)
 		@game = game
@@ -12,30 +12,32 @@ class Bowling
 	end
 
 	def setTotalPoint()
-		tmpFrame = nil
+		before_frame = nil
 
 		@game.each do |frame|
-			if tmpFrame != nil && tmpFrame.is_strike?
-				tmpFrame.sumSpareStrike(frame.getPoint())
-			elsif tmpFrame != nil && tmpFrame.is_spare? 
-				tmpFrame.sumSpareStrike(frame.first_roll)
-			end 
+		  if before_frame != nil
+		    
+			  if before_frame.is_strike?
+				  before_frame.sumToTotalPoint(frame.totalPoint())
+			  elsif before_frame.is_spare? 
+				  before_frame.sumToTotalPoint(frame.first_roll)
+			  end 
 
-			if tmpFrame != nil
-				frame.sumSpareStrike(tmpFrame.total_point)
-			end
+				frame.sumToTotalPoint(before_frame.totalPoint())
+		  end
 
-			tmpFrame = frame
+			before_frame = frame
 		end
 	end
 
-	def getTotalPoint()
+	def totalPoint()
 		setTotalPoint()
 		
+		#eliminazione dei punteggi dell'ultimo lancio
 		if @game.length == 11
-			return @game[-1].total_point - (@game[-1].first_roll + @game[-1].second_roll)
+			return @game[-1].totalPoint() - (@game[-1].first_roll + @game[-1].second_roll)
 		else
-			return @game[-1].total_point
+			return @game[-1].totalPoint()
 		end
 	end
 

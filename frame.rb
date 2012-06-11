@@ -10,21 +10,21 @@ class Frame
 		checkPoint()
 	end
 
-	def sumSpareStrike(value)
+	def sumToTotalPoint(value)
 		@total_point += value
 	end
 
 	def checkPoint()
 		if @first_roll == 10
 			@is_strike = 1
-		elsif getPoint() == 10
+		elsif totalPoint() == 10
 			@is_spare = 1
-		elsif getPoint() > 10
+		elsif totalPoint() > 10
 			raise "The total point must be less than 10"
 		end
 	end
 
-	def getPoint()
+	def totalPoint()
 		@total_point
 	end
 
