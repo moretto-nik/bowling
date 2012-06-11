@@ -30,11 +30,11 @@ describe Frame do
 	end
 
 	it 'get total point' do
-		@frame.totalPoint().should == 7
+		@frame.total_point.should == 7
 	end
 
 	it 'get total point with Strike and Spare' do
-		@frameSpare.totalPoint().should == 10
-		@frameStrike.totalPoint().should == 10
+		@frameSpare.total_point.should == 10
+		@frameStrike.total_point.should == 10
 	end
 end

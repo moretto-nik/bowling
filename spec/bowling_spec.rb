@@ -15,28 +15,24 @@ describe Bowling do
 		@bowling.class.should == Bowling
 	end	
 
-	it 'argoment' do
-		@bowling.getGame().class.should == Array
-	end
-
 	it 'point' do
-		@bowling.totalPoint().should == 14
+		@bowling.gameTotalPoint().should == 14
 	end
 
 	it 'total point with spare' do
-		@bowlingSpare.totalPoint().should == 27
+		@bowlingSpare.gameTotalPoint().should == 27
 	end
 
 	it 'total point with strike' do
-		@bowlingStrike.totalPoint().should == 29
+		@bowlingStrike.gameTotalPoint().should == 29
 	end
 
 	it 'complex game with spare and strike' do
-		@bowlingGame.totalPoint().should == 133
+		@bowlingGame.gameTotalPoint().should == 133
 	end
 
 	it 'Turkey' do
-		@bowlingTurkey.totalPoint().should == 73
+		@bowlingTurkey.gameTotalPoint().should == 73
 	end
 
 	it 'test setTotalPoint' do

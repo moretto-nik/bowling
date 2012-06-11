@@ -24,7 +24,7 @@ class Frame
 	def checkPoint()
 		if first_roll == 10
 			@is_strike = 1
-		elsif totalPoint() == 10
+		elsif total_point == 10
 			@is_spare = 1
 		end
 	end
@@ -36,10 +36,6 @@ class Frame
   def second_roll
     @roll[1]
   end
-
-	def totalPoint()
-		@total_point
-	end
 
 	def is_spare?
 		is_spare
