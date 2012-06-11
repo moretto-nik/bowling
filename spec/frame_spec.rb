@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Frame do
 	
 	before :each do
-		@frame = Frame.new(3,4)
-		@frameStrike = Frame.new(10,0)
-		@frameSpare = Frame.new(6,4)
+		@frame = Frame.new([3,4])
+		@frameStrike = Frame.new([10,0])
+		@frameSpare = Frame.new([6,4])
 	end
 
 	it 'constructor' do

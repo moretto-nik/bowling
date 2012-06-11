@@ -13,12 +13,22 @@ class Bowling
 
 	def setTotalPoint()
 		before_frame = nil
+		turkey = nil
 
 		@game.each do |frame|
 		  if before_frame != nil
+		    if turkey != nil
+		      turkey.sumToTotalPoint(frame.first_roll)
+		      puts "total point turkey = "+turkey.totalPoint().to_s+"."
+		      turkey = nil
+	      end
+		    
 		    
 			  if before_frame.is_strike?
-				  before_frame.sumToTotalPoint(frame.totalPoint())
+				  before_frame.sumToTotalPoint(frame.first_roll + frame.second_roll)
+				  if frame.second_roll == 0
+				    turkey = before_frame
+			    end
 			  elsif before_frame.is_spare? 
 				  before_frame.sumToTotalPoint(frame.first_roll)
 			  end 
@@ -28,17 +38,16 @@ class Bowling
 
 			before_frame = frame
 		end
+		
+		@game.each do |frame|
+		  puts frame.totalPoint()
+	  end
 	end
 
 	def totalPoint()
 		setTotalPoint()
 		
-		#eliminazione dei punteggi dell'ultimo lancio
-		if @game.length == 11
-			return @game[-1].totalPoint() - (@game[-1].first_roll + @game[-1].second_roll)
-		else
-			return @game[-1].totalPoint()
-		end
+		return @game[-1].totalPoint()
 	end
 
 end

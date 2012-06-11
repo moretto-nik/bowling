@@ -1,13 +1,20 @@
 class Frame
 
-	attr_reader :first_roll, :second_roll, :is_spare, :is_strike, :total_point
+	attr_reader :roll, :is_spare, :is_strike, :total_point
 
-	def initialize(first_roll, second_roll)
-		@first_roll = first_roll
-		@second_roll = second_roll
+	def initialize(roll)
+	  @roll = roll
 		@total_point = first_roll + second_roll
-
+		
 		checkPoint()
+		
+		if @roll.length > 2
+		  if is_spare?
+		    sumToTotalPoint(@roll[2])
+	    elsif is_strike?
+	      sumToTotalPoint(@roll[2]+@roll[3])
+      end
+    end
 	end
 
 	def sumToTotalPoint(value)
@@ -15,14 +22,20 @@ class Frame
 	end
 
 	def checkPoint()
-		if @first_roll == 10
+		if first_roll == 10
 			@is_strike = 1
 		elsif totalPoint() == 10
 			@is_spare = 1
-		elsif totalPoint() > 10
-			raise "The total point must be less than 10"
 		end
 	end
+	
+	def first_roll
+	  @roll[0]
+  end
+  
+  def second_roll
+    @roll[1]
+  end
 
 	def totalPoint()
 		@total_point
